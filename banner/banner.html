@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Source for the forum signature banners. Render with:
+     msedge --headless=new --hide-scrollbars --window-size=W,H --screenshot=out.png "banner.html?s=wide"   -->
+<html lang="en"><meta charset="utf-8">
+<style>
+@font-face { font-family: "Newsreader"; src: url(../fonts/newsreader.woff2) format("woff2"); font-weight: 200 800; }
+@font-face { font-family: "Inter"; src: url(../fonts/inter.woff2) format("woff2"); font-weight: 100 900; }
+html, body { margin: 0; background: #151312; overflow: hidden; }
+.b {
+  position: relative; box-sizing: border-box; overflow: hidden;
+  display: flex; align-items: center;
+  color: #ecebe8; font-family: Inter, sans-serif;
+  background:
+    radial-gradient(circle at var(--gx) 50%, rgba(140, 32, 24, .55), transparent var(--gr)),
+    repeating-linear-gradient(60deg,  rgba(255,255,255,.03) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(-60deg, rgba(255,255,255,.03) 0 1px, transparent 1px 22px),
+    #151312;
+}
+.b::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: var(--line); background: linear-gradient(90deg, #b8402f, #b8402f 30%, rgba(184,64,47,0)); }
+.b img { flex: none; filter: drop-shadow(0 4px 10px rgba(0,0,0,.7)); }
+.name { font-family: Newsreader, serif; font-weight: 400; letter-spacing: -.01em; line-height: 1; white-space: nowrap; }
+.tag { color: #a19d97; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+.url { margin-left: auto; color: #d0614f; letter-spacing: .02em; white-space: nowrap; font-weight: 500; }
+
+/* 600 x 100 */
+.wide { width: 600px; height: 100px; padding: 0 26px 0 18px; gap: 16px; --gx: 52px; --gr: 120px; --line: 2px; }
+.wide img { width: 72px; }
+.wide .name { font-size: 31px; }
+.wide .tag { font-size: 10.5px; margin-top: 8px; }
+.wide .url { font-size: 12.5px; }
+
+/* 468 x 60 */
+.small { width: 468px; height: 60px; padding: 0 16px 0 10px; gap: 10px; --gx: 32px; --gr: 75px; --line: 2px; }
+.small img { width: 46px; }
+.small .name { font-size: 22px; }
+.small .tag { font-size: 8.5px; margin-top: 5px; letter-spacing: .12em; }
+.small .url { font-size: 10.5px; }
+</style>
+<div class="b" id="b">
+  <img src="../img/logo.webp" alt="">
+  <div>
+    <div class="name">BockwurstWilly Labs</div>
+    <div class="tag">Patches · Launchers · Mods · Ports</div>
+  </div>
+  <div class="url">bockwurstwilly.github.io</div>
+</div>
+<script>
+document.getElementById("b").classList.add(new URLSearchParams(location.search).get("s") || "wide");
+</script>
+</html>

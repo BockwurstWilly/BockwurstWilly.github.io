@@ -61,33 +61,35 @@ function projectRow(p) {
   return row;
 }
 
+// Always asks GitHub for the latest release. The last answer is kept in
+// localStorage only as a fallback, e.g. when the API rate limit is hit.
 async function loadRelease(p, button, latest) {
-  const key = "rel:" + p.repo;
-  let rel = null;
+  const key = "release:" + p.repo;
+  const show = rel => {
+    const asset = rel.assets.find(a => p.asset.test(a.name)) || rel.assets[0];
+    if (!asset) return;
+    button.href = asset.url;
+    button.textContent = `Download ${rel.tag}`;
+    latest.textContent = `${rel.tag} · ${asset.name} · ${formatSize(asset.size)}`;
+  };
+
   try {
-    const cached = JSON.parse(sessionStorage.getItem(key) || "null");
-    if (cached && Date.now() - cached.t < 30 * 60 * 1000) rel = cached.r;
-  } catch (_) {}
-
-  if (!rel) {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${p.repo}/releases/latest`,
+      { headers: { Accept: "application/vnd.github+json" }, cache: "no-cache" });
+    if (!res.ok) throw new Error(res.status);
+    const j = await res.json();
+    const rel = {
+      tag: j.tag_name,
+      assets: (j.assets || []).map(a => ({ name: a.name, url: a.browser_download_url, size: a.size })),
+    };
+    show(rel);
+    try { localStorage.setItem(key, JSON.stringify(rel)); } catch (_) {}
+  } catch (_) {
     try {
-      const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${p.repo}/releases/latest`,
-        { headers: { Accept: "application/vnd.github+json" } });
-      if (!res.ok) return;
-      const j = await res.json();
-      rel = {
-        tag: j.tag_name,
-        assets: (j.assets || []).map(a => ({ name: a.name, url: a.browser_download_url, size: a.size })),
-      };
-      try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), r: rel })); } catch (_) {}
-    } catch (_) { return; }
+      const old = JSON.parse(localStorage.getItem(key) || "null");
+      if (old) show(old);
+    } catch (_) {}
   }
-
-  const asset = rel.assets.find(a => p.asset.test(a.name)) || rel.assets[0];
-  if (!asset) return;
-  button.href = asset.url;
-  button.textContent = `Download ${rel.tag}`;
-  latest.textContent = `${rel.tag} · ${asset.name} · ${formatSize(asset.size)}`;
 }
 
 let rowIndex = 0;
