@@ -179,3 +179,7 @@ a:focus-visible { outline: 2px solid var(--red-text); outline-offset: 3px; borde
   .project h3 { font-size: 30px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* visitor counter (hits.sh) */
+.foot .hits { margin-top: 14px; }
+.foot .hits img { display: inline-block; height: 20px; width: auto; border-radius: 4px; opacity: .55; }
