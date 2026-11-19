@@ -37,6 +37,21 @@ const PROJECTS = [
   },
   {
     category: "patches",
+    repo: "CoC-DCotE-HD-Patch",
+    kind: "HD patch & launcher",
+    title: "Call of Cthulhu: Dark Corners of the Earth",
+    text: "An unofficial HD patch with its own launcher for the GOG release. Your monitor’s resolution, fullscreen that survives Alt+Tab, a precise mouse, and Xbox or PlayStation controllers with the Xbox version’s layout – no Steam or DS4Windows needed. Film grain can be switched off. Uninstalling restores the game folder byte for byte.",
+    facts: [
+      ["Game",   "Call of Cthulhu: Dark Corners of the Earth (GOG)"],
+      ["System", "Windows 10/11"],
+    ],
+    image: "img/coc-dcote-hd.webp",
+    imageAlt: "The Call of Cthulhu HD launcher, graphics settings page",
+    asset: /\.(zip|exe)$/i,
+    links: [["View on GitHub", "https://github.com/BockwurstWilly/CoC-DCotE-HD-Patch"]],
+  },
+  {
+    category: "patches",
     repo: "BigRace-USA-LAN",
     kind: "LAN patcher & launcher",
     title: "Pro Pinball – Big Race USA",
