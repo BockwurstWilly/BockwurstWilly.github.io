@@ -62,7 +62,7 @@ const PROJECTS = [
     ],
     asset: /\.exe$/i,
     links: [["View on GitHub", "https://github.com/BockwurstWilly/BigRace-USA-LAN"]],
-    note: "Instructions are in German.",
+    note: "Patcher and launcher are in German; the instructions on GitHub are in English.",
   },
   {
     category: "mods",
