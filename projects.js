@@ -55,7 +55,7 @@ const PROJECTS = [
     repo: "Ballance-HD-Patch",
     kind: "HD patch & launcher",
     title: "Ballance",
-    text: "An unofficial HD patch with its own launcher. Borderless at your native resolution, real widescreen and smooth VSync frames – and the ball rolls with an Xbox or PlayStation controller: stepless, with a free camera and button prompts in the game. No mod loader, no extra runtimes. Uninstalling restores the game folder byte for byte.",
+    text: "An unofficial HD patch with its own launcher. Borderless at your native resolution, real widescreen and smooth VSync frames – and the ball rolls with an Xbox or PlayStation controller: stepless, with a free camera and button prompts in the game. The official bonus level 13 from 2004 can be added during setup. No mod loader, no extra runtimes. Uninstalling restores the game folder byte for byte.",
     facts: [
       ["Game",   "Ballance (GOG or Steam)"],
       ["System", "Windows 10/11"],
