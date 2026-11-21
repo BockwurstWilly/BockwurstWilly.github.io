@@ -52,6 +52,21 @@ const PROJECTS = [
   },
   {
     category: "patches",
+    repo: "Ballance-HD-Patch",
+    kind: "HD patch & launcher",
+    title: "Ballance",
+    text: "An unofficial HD patch with its own launcher. Borderless at your native resolution, real widescreen and smooth VSync frames – and the ball rolls with an Xbox or PlayStation controller: stepless, with a free camera and button prompts in the game. No mod loader, no extra runtimes. Uninstalling restores the game folder byte for byte.",
+    facts: [
+      ["Game",   "Ballance (GOG or Steam)"],
+      ["System", "Windows 10/11"],
+    ],
+    image: "img/ballance-hd.jpg",
+    imageAlt: "The Ballance HD launcher, graphics settings page",
+    asset: /\.zip$/i,
+    links: [["View on GitHub", "https://github.com/BockwurstWilly/Ballance-HD-Patch"]],
+  },
+  {
+    category: "patches",
     repo: "BigRace-USA-LAN",
     kind: "LAN patcher & launcher",
     title: "Pro Pinball – Big Race USA",
