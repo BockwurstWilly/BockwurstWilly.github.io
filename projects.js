@@ -30,9 +30,9 @@ const PROJECTS = [
       ["Game",   "Blood II: The Chosen + The Nightmare Levels (GOG)"],
       ["System", "Windows 10/11"],
     ],
-    image: "img/blood2-hd.jpg",
+    image: "img/blood2-hd.jpg?v=2",
     imageAlt: "The Blood II HD launcher, graphics settings page",
-    asset: /\.(zip|exe)$/i,
+    asset: /\.zip$/i,
     links: [["View on GitHub", "https://github.com/BockwurstWilly/Blood2-HD-Patch"]],
   },
   {
